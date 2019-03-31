@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/sundjly/react-typeScript-component-demo/issues"
   },
-  "homepage": "https://github.com/sundjly/react-typeScript-component-demo#readme"
+  "homepage": "https://github.com/sundjly/react-typeScript-component-demo#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.4.1",
+    "webpack": "4.29.6",
+    "webpack-cli": "3.2.3"
+  }
 }
