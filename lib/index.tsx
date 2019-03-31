@@ -1,3 +1,7 @@
-const div:HTMLDivElement = document.createElement('div');
-div.innerText = 'start coding';
-document.body.appendChild(div);
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import Button from './Button';
+console.log(React);
+console.log(ReactDOM);
+
+ReactDOM.render(<Button/>, document.body);
