@@ -9,11 +9,13 @@ test('link changes the class when hovered', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
+  // @ts-ignore
   tree.props.onMouseEnter();
 
   tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
+  // @ts-ignore
   tree.props.onMouseLeave();
 
   tree = component.toJSON();
