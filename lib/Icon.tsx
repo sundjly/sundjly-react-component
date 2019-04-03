@@ -1,16 +1,16 @@
 import React from 'react';
 import './importAll';
+import './icon.scss';
+
 interface IconProps {
   name: string;
 }
 
 const Icon: React.FunctionComponent<IconProps> = (props) => {
   return (
-    <span>
-      <svg>
-        <use xlinkHref="#wechat"></use>
-      </svg>
-    </span>
+    <svg className={'customer-icon'}>
+      <use xlinkHref={`#${props.name}`}></use>
+    </svg>
   );
 };
 
