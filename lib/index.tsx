@@ -20,10 +20,12 @@ const svgMouseLeave: React.MouseEventHandler<SVGElement> = () => {
 };
 
 ReactDOM.render((<div>
-    <Icon name="wechat"
-          onClick={svgClick}
-          onMouseLeave={svgMouseLeave}
-          onMouseEnter={svgMouseEnter}
+    <Icon
+      className="icon-wechat"
+      name="wechat"
+      onClick={svgClick}
+      onMouseLeave={svgMouseLeave}
+      onMouseEnter={svgMouseEnter}
     />
     <Icon name="qq" onClick={svgClick}/>
     <Icon name="banana" onClick={svgClick}/>
