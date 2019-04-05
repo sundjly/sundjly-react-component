@@ -2,15 +2,18 @@ import React from 'react';
 import './importAll';
 import './icon.scss';
 
-interface IconProps {
+interface IconProps extends React.SVGAttributes<SVGElement> {
   name: string;
-  onClick?: React.MouseEventHandler<SVGElement>
 }
 
 const Icon: React.FunctionComponent<IconProps> = (props) => {
   return (
-    <svg className={'customer-icon'} onClick={props.onClick}>
-      <use xlinkHref={`#${props.name}`}></use>
+    <svg className={'customer-icon'}
+         onClick={props.onClick}
+         onMouseLeave={props.onMouseLeave}
+         onMouseEnter={props.onMouseEnter}
+    >
+      <use xlinkHref={`#${props.name}`}/>
     </svg>
   );
 };
