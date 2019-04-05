@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="0" time="5.384">
+  <testsuite name="combineClass" errors="0" failures="0" skipped="0" timestamp="2019-04-05T10:44:34" time="3.467" tests="5">
+    <testcase classname="combineClass 接受一个className" name="combineClass 接受一个className" time="0.003">
+    </testcase>
+    <testcase classname="combineClass 接受两个参数" name="combineClass 接受两个参数" time="0">
+    </testcase>
+    <testcase classname="combineClass 接受undefined" name="combineClass 接受undefined" time="0">
+    </testcase>
+    <testcase classname="combineClass 接受各种参数" name="combineClass 接受各种参数" time="0">
+    </testcase>
+    <testcase classname="combineClass 接受0个参数" name="combineClass 接受0个参数" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="icon组件测试" errors="0" failures="0" skipped="0" timestamp="2019-04-05T10:44:34" time="3.832" tests="2">
+    <testcase classname="icon组件测试 icon render successfully" name="icon组件测试 icon render successfully" time="0.01">
+    </testcase>
+    <testcase classname="icon组件测试 icon onClick" name="icon组件测试 icon onClick" time="0.024">
+    </testcase>
+  </testsuite>
+</testsuites>
