@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Icon from './Icon';
+import Icon from './icon/Icon';
 
 const svgClick = (e: React.MouseEvent<SVGElement | SVGUseElement>) => {
   console.log(e);
