@@ -1,7 +1,5 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+
 defaults: &defaults
   docker:
     - image: circleci/node:8
@@ -12,9 +10,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache
-        keys:
-          - v2-dependencies-{{checksum "package.json"}}
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{checksum "package.json"}}
       - run: yarn install
       - save_cache:
           paths:
@@ -29,8 +27,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - attach_workspace
-        at: .
+      - attach_workspace:
+          at: .
       - run: yarn build
       - persist_to_workspace:
           root: .
@@ -41,8 +39,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - attach_workspace
-        at: .
+      - attach_workspace:
+          at: .
       - run: yarn ci
       - store_test_results:
           path: test-results
