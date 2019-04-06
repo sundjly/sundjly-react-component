@@ -71,8 +71,10 @@ workflows:
       - publish:
           requires:
             - build
-#          filters:
-#            tags:
-#              only: /^v[0-9]+(\.[0-9]+)*$/
-#            branches:
-#              ignore: /.*/
+          # circle tag filters 对每次git push进行过滤，仅当添加tag的时候进行发布的操作
+          filters:
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+            #
+            branches:
+              ignore: /.*/
