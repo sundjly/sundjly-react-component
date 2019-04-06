@@ -2,6 +2,7 @@
 
 defaults: &defaults
   docker:
+    # specify the version you desire here
     - image: circleci/node:8
 
 version: 2
@@ -10,14 +11,15 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      # 加速缓存，提高速度
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: .
           paths:
@@ -32,7 +34,10 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            -dist
+            - dist
+            # - package.json
+            # - README.md
+            # - LICENSE
   test:
     <<: *defaults
     steps:
@@ -40,8 +45,16 @@ jobs:
       - attach_workspace:
           at: .
       - run: yarn ci
+      #- run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: test-results
+#  publish:
+#    <<: *defaults
+#    steps:
+#      - attach_workspace:
+#          at: .
+#      - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+#      - run: npm publish
 
 workflows:
   version: 2
@@ -50,7 +63,15 @@ workflows:
       - prepare
       - build:
           requires:
-            -test
+            - test
       - test:
           requires:
             - prepare
+#      - publish:
+#          requires:
+#            - build
+#          filters:
+#            tags:
+#              only: /^v[0-9]+(\.[0-9]+)*$/
+#            branches:
+#              ignore: /.*/
