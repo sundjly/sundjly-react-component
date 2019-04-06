@@ -3,6 +3,7 @@
 module.exports = {
   verbose: true,
   clearMocks: false,
+  // jest-junit 在ci的时候才需要
   reporters: ['default'],
 
   collectCoverage: false,
