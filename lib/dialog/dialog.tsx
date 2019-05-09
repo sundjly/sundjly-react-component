@@ -3,6 +3,7 @@ import * as React from 'react';
 import './dialog.scss';
 import Icon from '../icon/Icon';
 import {formatClass} from '../utils/generateCustomClass';
+import ReactDOM from 'react-dom';
 
 const {Fragment} = React;
 
@@ -17,15 +18,18 @@ interface IProps {
 const formatDialog = formatClass('sundjly-dialog');
 const FD = formatDialog;
 const Dialog: React.FunctionComponent<IProps> = (props) => {
+
 	const onClose: React.MouseEventHandler = (e) => {
 		props.onClose(e);
 	};
+
 	const onClickMask: React.MouseEventHandler = (e) => {
 		if (props.closeByMask) {
 			props.onClose(e);
 		}
 	};
-	return (
+
+	const result =  (
 		props.visible ?
 			<Fragment>
 				<div className={FD('mask')} onClick={onClickMask}/>
@@ -49,6 +53,9 @@ const Dialog: React.FunctionComponent<IProps> = (props) => {
 			:
 			null
 	);
+
+	return ReactDOM.createPortal(result, document.body)
+
 };
 Dialog.defaultProps = {
 	closeByMask: false
