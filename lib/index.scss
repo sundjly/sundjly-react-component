@@ -1,0 +1,64 @@
+html {
+  box-sizing: border-box;
+}
+// 伪类不会继承，所以需要这里定义
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+[class^=sundjly]{
+  box-sizing: border-box;
+  &::after,
+  &::before{
+    box-sizing: border-box;
+  }
+}
+
+button{
+  font-size:14px;
+  padding: 0 15px;
+  height: 34px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  //outline:none;
+  margin: 0 4px;
+  &:first-child{
+    margin-left: 0;
+  }
+  &:last-child{
+    margin-right: 0;
+  }
+}
+// 按钮点击波纹效果 https://blog.csdn.net/u014291497/article/details/77418434
+button{
+  position: relative;
+  // 隐藏溢出的径向渐变背景
+  overflow: hidden;
+  &::after{
+    content:'';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    //设置径向渐变
+    background-image: radial-gradient(circle, grey 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10,10);
+    opacity: 0;
+    transition: transform .3s ,opacity .5s;
+  }
+}
+button:active:after{
+  transform:scale(0, 0);
+  opacity: .3;
+  //设置初始状态
+  transition: 0s;
+}
