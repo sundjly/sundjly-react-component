@@ -10,7 +10,8 @@ const {Fragment} = React;
 interface IProps {
 	visible: boolean;
 	children: ReactNode,
-	footer: ReactElement[],
+	title?: ReactNode,
+	footer?: ReactElement[],
 	onClose: React.MouseEventHandler,
 	closeByMask?: boolean;
 }
@@ -29,7 +30,7 @@ const Dialog: React.FunctionComponent<IProps> = (props) => {
 		}
 	};
 
-	const result =  (
+	const result = (
 		props.visible ?
 			<Fragment>
 				<div className={FD('mask')} onClick={onClickMask}/>
@@ -39,12 +40,12 @@ const Dialog: React.FunctionComponent<IProps> = (props) => {
 						className={FD('close')}>
 						<Icon name="close"/>
 					</div>
-					<header className={FD('header')}>header</header>
+					<header className={FD('header')}>{props.title}</header>
 					<main className={FD('main')}>
 						{props.children}
 					</main>
 					<footer className={FD('footer')}>
-						{props.footer.map((button, index) => {
+						{props.footer && props.footer.map((button, index) => {
 							return React.cloneElement(button, {key: index});
 						})}
 					</footer>
@@ -54,11 +55,80 @@ const Dialog: React.FunctionComponent<IProps> = (props) => {
 			null
 	);
 
-	return ReactDOM.createPortal(result, document.body)
+	return ReactDOM.createPortal(result, document.body);
 
 };
 Dialog.defaultProps = {
-	closeByMask: false
+	closeByMask: true,
+	title: '标题'
 };
+
+// 动态创建 Dialog 组件
+const alert = (content: string) => {
+	const component = (
+		<Dialog
+			onClose={() => {
+				// 重新渲染，然后更改 visible 属性
+				ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+				// 利用 ReactDOM 清理绑定的事件
+				ReactDOM.unmountComponentAtNode(div);
+				// 移除 div 元素
+				div.remove();
+			}}
+			visible={true}
+			title={''}
+		>
+			{content}
+		</Dialog>
+	);
+	const div = document.createElement('div');
+	document.body.append(div);
+	ReactDOM.render(component, div);
+};
+
+interface ConfirmProps {
+	title?: string;
+	content: string;
+	onOk?: () => void;
+	onCancel?: () => void;
+}
+
+
+const confirm = (props: ConfirmProps) => {
+	const {title, content, onOk, onCancel} = props;
+	const okCallback = () => {
+		onOk && onOk();
+		onClose();
+	};
+	const cancleCallback = () => {
+		onCancel && onCancel();
+		onClose();
+	};
+	const onClose = () => {
+		ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+		ReactDOM.unmountComponentAtNode(div);
+		div.remove();
+	};
+	const component = (
+		<Dialog
+			title={title}
+			visible={true}
+			onClose={onClose}
+			footer={[
+				<button onClick={okCallback}>yes</button>,
+				<button onClick={cancleCallback}>no</button>
+			]}
+		>
+			{content}
+		</Dialog>
+	);
+
+	const div = document.createElement('div');
+	document.body.append(div);
+	ReactDOM.render(component, div);
+};
+
+
+export {alert, confirm};
 export default Dialog;
 

@@ -21,7 +21,7 @@ button{
   border-radius: 4px;
   color: #fff;
   background-color: #1890ff;
-  border-color: #1890ff;
+  border:1px solid #1890ff;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   //outline:none;
@@ -53,7 +53,7 @@ button{
     background-position: 50%;
     transform: scale(10,10);
     opacity: 0;
-    transition: transform .3s ,opacity .5s;
+    transition: transform .3s ,opacity .9s;
   }
 }
 button:active:after{
