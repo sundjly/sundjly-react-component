@@ -127,8 +127,28 @@ const confirm = (props: ConfirmProps) => {
 	document.body.append(div);
 	ReactDOM.render(component, div);
 };
+// 返回 onClose 的方法，方便在外部能够调用这个关闭的方法
+const modal = (content: React.ReactNode | React.ReactFragment) => {
+	const onClose = () => {
+		ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+		ReactDOM.unmountComponentAtNode(div);
+		div.remove();
+	};
 
+	const component = (
+		<Dialog
+			onClose={onClose}
+			visible={true}
+		>
+			{content}
+		</Dialog>
+	);
+	const div = document.createElement('div');
+	document.body.append(div);
+	ReactDOM.render(component, div);
+	return onClose;
+};
 
-export {alert, confirm};
+export {alert, confirm, modal};
 export default Dialog;
 

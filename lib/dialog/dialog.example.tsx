@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Dialog,{alert, confirm} from './dialog';
+import Dialog, {alert, confirm, modal} from './dialog';
 import './dialog.example.scss';
 
 const {useState} = React;
@@ -7,6 +7,15 @@ const {useState} = React;
 export default function DialogExample() {
 	const [isVisible, setVisible] = useState(false);
 	const [isVisible2, setVisible2] = useState(false);
+	const openModal =()=>{
+		const close = modal(
+			<div>
+				modal content
+				<button onClick={()=>{close()}}>close</button>
+			</div>
+
+		)
+	}
 	return (
 		<div>
 			<section className="code-box">
@@ -34,6 +43,7 @@ export default function DialogExample() {
 				<h1>example 3</h1>
 				<button onClick={()=>{alert('alert content')}}>alert</button>
 				<button onClick={()=>{confirm({content:'confirm'})}}>confirm</button>
+				<button onClick={()=>{openModal()}}>modal</button>
 			</section>
 		</div>
 
