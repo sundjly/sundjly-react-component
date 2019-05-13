@@ -16,6 +16,13 @@ interface IProps {
 	closeByMask?: boolean;
 }
 
+interface ConfirmProps {
+	title?: string;
+	content: string;
+	onOk?: () => void;
+	onCancel?: () => void;
+}
+
 const formatDialog = formatClass('sundjly-dialog');
 const FD = formatDialog;
 const Dialog: React.FunctionComponent<IProps> = (props) => {
@@ -65,80 +72,46 @@ Dialog.defaultProps = {
 
 // 动态创建 Dialog 组件
 const alert = (content: string) => {
-	const component = (
-		<Dialog
-			onClose={() => {
-				// 重新渲染，然后更改 visible 属性
-				ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-				// 利用 ReactDOM 清理绑定的事件
-				ReactDOM.unmountComponentAtNode(div);
-				// 移除 div 元素
-				div.remove();
-			}}
-			visible={true}
-			title={''}
-		>
-			{content}
-		</Dialog>
-	);
-	const div = document.createElement('div');
-	document.body.append(div);
-	ReactDOM.render(component, div);
+	commonFn(content);
 };
 
-interface ConfirmProps {
-	title?: string;
-	content: string;
-	onOk?: () => void;
-	onCancel?: () => void;
-}
-
-
 const confirm = (props: ConfirmProps) => {
-	const {title, content, onOk, onCancel} = props;
+	const {content, onOk, onCancel} = props;
 	const okCallback = () => {
 		onOk && onOk();
 		onClose();
 	};
-	const cancleCallback = () => {
+	const cancelCallback = () => {
 		onCancel && onCancel();
 		onClose();
 	};
-	const onClose = () => {
-		ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-		ReactDOM.unmountComponentAtNode(div);
-		div.remove();
-	};
-	const component = (
-		<Dialog
-			title={title}
-			visible={true}
-			onClose={onClose}
-			footer={[
-				<button onClick={okCallback}>yes</button>,
-				<button onClick={cancleCallback}>no</button>
-			]}
-		>
-			{content}
-		</Dialog>
-	);
+	const footer = [
+		<button onClick={okCallback}>yes</button>,
+		<button onClick={cancelCallback}>no</button>
+	];
+	const onClose = commonFn(content, footer);
+	return onClose;
 
-	const div = document.createElement('div');
-	document.body.append(div);
-	ReactDOM.render(component, div);
 };
-// 返回 onClose 的方法，方便在外部能够调用这个关闭的方法
 const modal = (content: React.ReactNode | React.ReactFragment) => {
+	return commonFn(content);
+};
+
+const commonFn = (content: any, footer?: any,title?:string) => {
 	const onClose = () => {
+		// 重新渲染，然后更改 visible 属性
 		ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+		// 利用 ReactDOM 清理绑定的事件
 		ReactDOM.unmountComponentAtNode(div);
+		// 移除 div 元素
 		div.remove();
 	};
-
 	const component = (
 		<Dialog
-			onClose={onClose}
 			visible={true}
+			onClose={onClose}
+			footer={footer}
+			title={title}
 		>
 			{content}
 		</Dialog>
@@ -146,6 +119,8 @@ const modal = (content: React.ReactNode | React.ReactFragment) => {
 	const div = document.createElement('div');
 	document.body.append(div);
 	ReactDOM.render(component, div);
+
+	// 返回 onClose 的方法，方便在外部能够调用这个关闭的方法
 	return onClose;
 };
 
