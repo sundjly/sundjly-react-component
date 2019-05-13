@@ -89,23 +89,27 @@ const confirm = (props: ConfirmProps) => {
 		<button onClick={okCallback}>yes</button>,
 		<button onClick={cancelCallback}>no</button>
 	];
-	const onClose = modal(content, footer);
+	const onClose = modal(content, footer, onCancel);
 };
 
-const modal = (content: React.ReactNode, footer?: Array<ReactElement>, title?: string) => {
+const modal = (content: React.ReactNode, footer?: Array<ReactElement>, afterClose?: () => void, title?: string) => {
 	const onClose = () => {
 		// 重新渲染，然后更改 visible 属性
 		ReactDOM.render(React.cloneElement(component, {visible: false}), div);
 		// 利用 ReactDOM 清理绑定的事件
 		ReactDOM.unmountComponentAtNode(div);
-		console.log('sdj')
+		console.log('sdj');
 		// 移除 div 元素
 		div.remove();
+	};
+	const close = () => {
+		onClose();
+		afterClose && afterClose();
 	};
 	const component = (
 		<Dialog
 			visible={true}
-			onClose={onClose}
+			onClose={close}
 			footer={footer}
 			title={title}
 		>
