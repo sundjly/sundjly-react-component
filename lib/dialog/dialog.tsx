@@ -72,7 +72,7 @@ Dialog.defaultProps = {
 
 // 动态创建 Dialog 组件
 const alert = (content: string) => {
-	commonFn(content);
+	modal(content);
 };
 
 const confirm = (props: ConfirmProps) => {
@@ -89,20 +89,16 @@ const confirm = (props: ConfirmProps) => {
 		<button onClick={okCallback}>yes</button>,
 		<button onClick={cancelCallback}>no</button>
 	];
-	const onClose = commonFn(content, footer);
-	return onClose;
-
-};
-const modal = (content: React.ReactNode | React.ReactFragment) => {
-	return commonFn(content);
+	const onClose = modal(content, footer);
 };
 
-const commonFn = (content: any, footer?: any,title?:string) => {
+const modal = (content: React.ReactNode, footer?: Array<ReactElement>, title?: string) => {
 	const onClose = () => {
 		// 重新渲染，然后更改 visible 属性
 		ReactDOM.render(React.cloneElement(component, {visible: false}), div);
 		// 利用 ReactDOM 清理绑定的事件
 		ReactDOM.unmountComponentAtNode(div);
+		console.log('sdj')
 		// 移除 div 元素
 		div.remove();
 	};
