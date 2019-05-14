@@ -2,7 +2,7 @@ import {ReactNode, ReactElement} from 'react';
 import * as React from 'react';
 import './dialog.scss';
 import Icon from '../icon/Icon';
-import {formatClass} from '../utils/generateCustomClass';
+import {formatClass} from '../helpers/generateCustomClass';
 import ReactDOM from 'react-dom';
 
 const {Fragment} = React;
@@ -47,7 +47,7 @@ const Dialog: React.FunctionComponent<IProps> = (props) => {
 						className={FD('close')}>
 						<Icon name="close"/>
 					</div>
-					<header className={FD('header')}>{props.title}</header>
+					<header className={FD('Header')}>{props.title}</header>
 					<main className={FD('main')}>
 						{props.children}
 					</main>
