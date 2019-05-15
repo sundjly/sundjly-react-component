@@ -1,19 +1,20 @@
 import React, {HTMLAttributes} from 'react';
-import {formatClass} from '../helpers/generateCustomClass';
+import {formatLayout} from './layout';
 
 
-const formatHeader = formatClass('sundjly-layout')
+
 interface IProps extends HTMLAttributes<HTMLElement> {}
+
 const Header: React.FunctionComponent<IProps> = (props) => {
-	const {className, ...rest} = props;
-	return (
-		<div
-			className={formatHeader('header', {extra: className})}
-			{...rest}
-		>
-			{props.children}
-		</div>
-	);
+  const {className, ...rest} = props;
+  return (
+    <header
+      className={formatLayout('header', {extra: className})}
+      {...rest}
+    >
+      {props.children}
+    </header>
+  );
 };
 
 export default Header;

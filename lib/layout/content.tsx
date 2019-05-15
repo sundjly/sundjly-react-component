@@ -1,19 +1,19 @@
 import React from 'react';
-import {formatClass} from '../helpers/generateCustomClass';
+import {formatLayout} from './layout';
 
 interface IProps extends React.HTMLAttributes<HTMLElement> {
 }
-const formatContent = formatClass('sundjly-layout')
+
 const Content: React.FunctionComponent<IProps> = (props) => {
-	const {className, ...rest} = props;
-	return (
-		<div
-			className={formatContent('content', {extra: className})}
-			{...rest}
-		>
-			{props.children}
-		</div>
-	);
+  const {className, ...rest} = props;
+  return (
+    <main
+      className={formatLayout('content', {extra: className})}
+      {...rest}
+    >
+      {props.children}
+    </main>
+  );
 };
 
 export default Content;

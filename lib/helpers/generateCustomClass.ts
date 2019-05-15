@@ -19,4 +19,4 @@ const formatClass = (prefix: string) => (name: string | ClassToggles, options?: 
 
 };
 
-export {formatClass};
+export {formatClass,Options,ClassToggles};

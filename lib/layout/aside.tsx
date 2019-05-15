@@ -1,20 +1,19 @@
 import React, {HTMLAttributes} from 'react';
-import {formatClass} from '../helpers/generateCustomClass';
+import {formatLayout} from './layout';
 
-interface IProps extends HTMLAttributes<HTMLElement>{
+interface IProps extends HTMLAttributes<HTMLElement> {
 }
-const formatAside = formatClass('sundjly-layout');
-const FA = formatAside;
+
 const Aside: React.FunctionComponent<IProps> = (props) => {
-	const {className, ...rest} = props;
-	return (
-		<div
-			className={FA('aside', {extra: className})}
-			{...rest}
-		>
-			{props.children}
-		</div>
-	);
+  const {className, ...rest} = props;
+  return (
+    <div
+      className={formatLayout('aside', {extra: className})}
+      {...rest}
+    >
+      {props.children}
+    </div>
+  );
 };
 
 export default Aside;
