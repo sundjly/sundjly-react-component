@@ -1,27 +1,17 @@
 @import '../helpers/primaryColor';
 
-
-.center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-50%, -50%);
-}
 .sundjly-layout{
   display:flex;
   flex-direction:column;
+
   &-content{
     flex-grow:1;
   }
-  & &{
-    flex-grow: 1;
+  &.sundjly-layout-has-aside{
     flex-direction: row;
   }
-  &.sundjly-layout-hasAside{
-    flex-direction: row;
-    .sundjly-layout{
-      flex-direction: column;
-    }
+  & &{
+    flex-grow:1;
   }
 }
 

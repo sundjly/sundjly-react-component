@@ -7,7 +7,7 @@ import Aside from './aside';
 import './layout.example.scss';
 export default function () {
 	return (
-		<div>
+		<div className="layout-example">
 			<section>
 				<h3>第一个例子</h3>
 				<Layout>
