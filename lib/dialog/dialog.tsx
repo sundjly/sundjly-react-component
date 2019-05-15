@@ -47,7 +47,7 @@ const Dialog: React.FunctionComponent<IProps> = (props) => {
 						className={FD('close')}>
 						<Icon name="close"/>
 					</div>
-					<header className={FD('Header')}>{props.title}</header>
+					<header className={FD('header')}>{props.title}</header>
 					<main className={FD('main')}>
 						{props.children}
 					</main>
