@@ -1,15 +1,9 @@
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  z-index:0;
-  right: 0;
+.nav-bar {
   height: 3.6rem;
   background-color: #fff;
   box-sizing: border-box;
   border-bottom: 1px solid #eaecef;
-
+  text-align: left;
   padding: .7rem 1.5rem;
   line-height: 2.2rem;
   .logo{
@@ -21,14 +15,16 @@
 }
 
 .main-container{
-  margin-top:  3.6rem;
-  display: flex;
-  align-content: flex-start;
-  justify-content: flex-start;
+  //display: flex;
+  //align-content: flex-start;
+  //justify-content: flex-start;
 
-  aside{
+  .main-side{
     padding: 1rem 0;
     border-right: 1px solid #eaecef;
+    font-size:16px;
+    line-height: 1;
+
     .header{
       color: #999;
       font-size: 1.1em;
@@ -45,7 +41,7 @@
       line-height: 1.7;
     }
   }
-  main{
+  .main-content{
     flex: 1;
   }
 }
