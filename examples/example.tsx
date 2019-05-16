@@ -1,35 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
 import IconExample from '../lib/icon/icon.example';
 import ButtonExample from '../lib/button.example';
 import DialogExample from '../lib/dialog/dialog.example';
 import LayoutExample from '../lib/layout/layout.example';
 import '../lib/index.scss';
 import './example.scss';
-import {Layout, Aside, Content, Header} from '../lib/layout/layout';
-
+import {Layout, Aside, Content, Header, Footer} from '../lib/layout/layout';
+// import * as logo from './Logo.png';
+const logo = require('./Logo.png');// 换成动态导入，这样 ts 就不会检查它的问题
 ReactDOM.render(
   <Router>
     <Layout className="theme-container">
       <Header className="nav-bar">
-        <div className="logo">sundjly's Component</div>
+        <div className="logo">
+          <img src={logo} alt="sundjly React UI"/>
+          <span className={"logo-title"}>SUNDJLY React UI</span>
+        </div>
       </Header>
       <Layout className="main-container">
         <Aside className={'main-side'}>
           <p className="header">组件</p>
           <ul>
             <li>
-              <Link to="/icon">Icon</Link>
+              <NavLink to="/icon">Icon</NavLink>
             </li>
             <li>
-              <Link to="/button">Button</Link>
+              <NavLink to="/button">Button</NavLink>
             </li>
             <li>
-              <Link to="/dialog">Dialog</Link>
+              <NavLink to="/dialog">Dialog</NavLink>
             </li>
             <li>
-              <Link to={'/layout'}>Layout</Link>
+              <NavLink to={'/layout'}>Layout</NavLink>
             </li>
           </ul>
         </Aside>
@@ -40,6 +44,9 @@ ReactDOM.render(
           <Route path="/layout" component={LayoutExample}/>
         </Content>
       </Layout>
+      <Footer className="main-footer">
+        &copy; sundjly
+      </Footer>
     </Layout>
   </Router>
   , document.querySelector('#app'));
