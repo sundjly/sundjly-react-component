@@ -1,5 +1,5 @@
-import React from  'react';
-import Icon from './Icon';
+import React from 'react';
+import Icon from '../Icon';
 
 const ICON_EXAMPLES: string[] = ['wechat', 'banana', 'qq','panda','close'];
 const IconExample: React.FunctionComponent = () => {

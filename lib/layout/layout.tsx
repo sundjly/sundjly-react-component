@@ -1,6 +1,6 @@
 import React, {ReactElement, ReactNodeArray} from 'react';
 import {ClassToggles, formatClass, Options} from '../helpers/generateCustomClass';
-import './layout.scss';
+import './style/layout.scss';
 import Aside from './aside';
 
 const formatLayout: (name: string | ClassToggles, option?: Options) => string = formatClass('sundjly-layout');

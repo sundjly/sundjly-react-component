@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
-import IconExample from '../lib/icon/icon.example';
-import ButtonExample from '../lib/button.example';
-import DialogExample from '../lib/dialog/dialog.example';
-import LayoutExample from '../lib/layout/layout.example';
+import IconDemo from '../lib/icon/demo/icon.demo';
+import ButtonDemo from '../lib/button/demo/button.demo';
+import DialogExample from '../lib/dialog/demo/dialog.example';
+import LayoutExample from '../lib/layout/demo/layout.example';
 import '../lib/index.scss';
 import './example.scss';
 import {Layout, Aside, Content, Header, Footer} from '../lib/layout/layout';
@@ -38,8 +38,8 @@ ReactDOM.render(
           </ul>
         </Aside>
         <Content className={'main-content'}>
-          <Route path="/icon" component={IconExample}/>
-          <Route path="/button" component={ButtonExample}/>
+          <Route path="/icon" component={IconDemo}/>
+          <Route path="/button" component={ButtonDemo}/>
           <Route path="/dialog" component={DialogExample}/>
           <Route path="/layout" component={LayoutExample}/>
         </Content>

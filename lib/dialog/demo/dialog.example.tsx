@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Dialog, {alert, confirm, modal} from './dialog';
+import Dialog, {alert, confirm, modal} from '../dialog';
 import './dialog.example.scss';
 
 const {useState} = React;

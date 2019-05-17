@@ -1,6 +1,6 @@
 import {ReactNode, ReactElement} from 'react';
 import * as React from 'react';
-import './dialog.scss';
+import './style/dialog.scss';
 import Icon from '../icon/Icon';
 import {formatClass} from '../helpers/generateCustomClass';
 import ReactDOM from 'react-dom';
