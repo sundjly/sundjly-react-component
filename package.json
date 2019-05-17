@@ -1,6 +1,6 @@
 {
   "name": "sundjly-react-component",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
@@ -13,7 +13,7 @@
     "doc": "cross-env NODE_ENV=production webpack --config webpack.config.doc.js",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "site-doc": "./scripts/doc.sh",
-    "tag":"./scripts/deployTag.sh",
+    "tag": "./scripts/deployTag.sh",
     "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js"
   },
   "repository": {
