@@ -1,5 +1,5 @@
 import ButtonExample from './button.example';
-import Demo from '../../helpers/demo';
+import Demo from '../../helpers/demo/demo';
 
 import * as React from 'react';
 

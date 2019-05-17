@@ -1,34 +1,29 @@
 @import '../lib/helpers/primaryColor.scss';
-
 html {
   box-sizing: border-box;
 }
-
 // 伪类不会继承，所以需要这里定义
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
-
 ul, ol {
   list-style: none;
 }
-
 a {
   text-decoration: none;
 }
-
+pre {
+  font-family: 'Fira Code Medium', Consolas, monospace;
+}
 $padding: 16px;
 $main-color: #94cae4;
 $border-color: #eee;
-
 .theme-container {
   height: 100vh;
 }
-
 .nav-bar {
   height: 3.6rem;
   background-color: #fff;
@@ -37,7 +32,6 @@ $border-color: #eee;
   text-align: left;
   padding: .7rem 1.5rem;
   line-height: 2.2rem;
-
   .logo {
     font-size: 1.3rem;
     font-weight: 600;
@@ -45,30 +39,25 @@ $border-color: #eee;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     img {
       width: 70px;
       height: auto;
     }
-
     &-title {
       height: 100%;
     }
   }
 }
-
 .main-container {
   //display: flex;
   //align-content: flex-start;
   //justify-content: flex-start;
-
   .main-side {
     padding: 1rem 0;
     border-right: 1px solid $border-color;
     font-size: 16px;
     line-height: 1;
     text-align: left;
-
     .header {
       color: #999;
       font-size: 1.1em;
@@ -77,20 +66,17 @@ $border-color: #eee;
       margin-top: 0;
       margin-bottom: 1rem;
     }
-
     ul {
       margin: 0;
       list-style-type: none;
       //line-height: 1.7;
-padding:0;
+      padding: 0;
     }
   }
-
   .main-content {
     flex: 1;
   }
 }
-
 .main-side {
   border-right: 1px solid $border-color;
   ul {
@@ -106,32 +92,30 @@ padding:0;
         &:hover {
           color: $main-color;
         }
-        &.active{
+        &.active {
           color: white;
-          background:$main-color;
+          background: $main-color;
         }
-        &::after{
-          content:'';
-          position:absolute;
+        &::after {
+          content: '';
+          position: absolute;
           top: 0;
           right: 0;
-          bottom:0;
+          bottom: 0;
           border-right: 3px solid $primary-color;
           transform: scaleY(.0001);
           opacity: 0;
-          transition: transform .15s cubic-bezier(.215, .61, .355, 1),opacity .15s cubic-bezier(.215, .61, .355, 1),-webkit-transform .15s cubic-bezier(.215, .61, .355, 1);
+          transition: transform .15s cubic-bezier(.215, .61, .355, 1), opacity .15s cubic-bezier(.215, .61, .355, 1), -webkit-transform .15s cubic-bezier(.215, .61, .355, 1);
         }
-        &.active::after{
-          transform:scaleY(1);
+        &.active::after {
+          transform: scaleY(1);
           opacity: 1;
-          transition: transform .15s cubic-bezier(.215, .61, .355, 1),opacity .15s cubic-bezier(.215, .61, .355, 1),-webkit-transform .15s cubic-bezier(.215, .61, .355, 1);
+          transition: transform .15s cubic-bezier(.215, .61, .355, 1), opacity .15s cubic-bezier(.215, .61, .355, 1), -webkit-transform .15s cubic-bezier(.215, .61, .355, 1);
         }
-
       }
     }
   }
 }
-
 .main-footer {
   line-height: 30px;
   font-size: 12px;
