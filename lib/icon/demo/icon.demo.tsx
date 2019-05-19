@@ -3,6 +3,7 @@ import Demo from '../../helpers/demo/demo';
 import * as React from 'react';
 import Icon from '../Icon';
 import './icon.demo.scss'
+import ApiContainer from '../../helpers/api-container/apiContainer';
 
 // raw-loader 的特定用法 require 里面
 const code = require('!!raw-loader!./icon.example.tsx').default;
@@ -19,7 +20,7 @@ export default () => {
 				<IconExample/>
 			</Demo>
 			<section className={'all-icon-demo'}>
-				<h3>组件默认添加的 Icon</h3>
+				<h2>组件默认添加的 Icon</h2>
 				<ul className={'icons-list'}>
 					{
 						ICON_EXAMPLES.map(val => (
@@ -31,6 +32,13 @@ export default () => {
 					}
 				</ul>
 			</section>
+			<ApiContainer
+				tbody={[
+					['name','图标类型。遵循图标的命名规范','string','-'],
+					['style','设置图标的样式，例如 fontSize 和 color','CSSProperties','-'],
+					['scriptUrl','iconfont.cn 项目在线生成的 js 地址','?:string','//at.alicdn.com/t/font_1198870_a7vz2zkwc3n.js'],
+				]}
+			/>
 		</section>
 	);
 }
