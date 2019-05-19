@@ -2,9 +2,12 @@ import * as React from 'react';
 import {CSSProperties, useState} from 'react';
 import Highlight, {defaultProps} from 'prism-react-renderer';
 import './demo.scss';
+import Icon from '../../icon/Icon';
 
 interface IProps {
 	code: string;
+	title: string,
+	description: string
 }
 
 const preStyle: CSSProperties = {
@@ -15,6 +18,7 @@ const preStyle: CSSProperties = {
 
 const Demo: React.FunctionComponent<IProps> = (props) => {
 	const [codeVisible, setCodeVisible] = useState(false);
+	const {title, description} = props;
 	const code = (
 		<Highlight
 			{...defaultProps}
@@ -41,21 +45,35 @@ const Demo: React.FunctionComponent<IProps> = (props) => {
 		</Highlight>
 	);
 	return (
-		<div>
-			<div>{props.children}</div>
-			<div>
-				<button
-					className={'code-btn'}
-					onClick={() => {setCodeVisible(!codeVisible);}}
-				>
-					查看代码
-				</button>
+		<div className={'all-demo-box'}>
+			<div className={'all-demo-example'}>{props.children}</div>
+			<div className={'all-demo-code'}>
+				<div className="code-title">{title}</div>
+				<div className="code-description">
+					{description}
+					<span
+						className="icon-wrapper"
+						title={'show code'}
+						onClick={() => {setCodeVisible(!codeVisible);}}
+					>
+						<Icon
+							className={'code-btn'}
+							name={'iconcodelibrary'}
+						/>
+					</span>
+				</div>
+
 			</div>
-			{
-				codeVisible && code
-			}
+			<div className={'all-code-example'}>
+				{
+					codeVisible && code
+				}
+			</div>
 		</div>
 	);
 };
-
+Demo.defaultProps = {
+	title: '组件标题',
+	description: '组件具体的描述'
+};
 export default Demo;
