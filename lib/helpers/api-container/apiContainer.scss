@@ -1,0 +1,59 @@
+.api-container {
+  overflow-x: auto;
+  color: #314659;
+  font-size: 14px;
+  line-height: 2;
+  margin: 16px;
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+    clear: both;
+    margin: 1.6em 0 .6em;
+    color: #0d1a26;
+    font-weight: 500;
+    text-align: left;
+    .anchor {
+      margin-left: 8px;
+      opacity: 0;
+      transition: opacity .3s ease;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  table {
+    display: table;
+    min-width: 719px;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    line-height: 1.5;
+    empty-cells: show;
+    border: 1px solid #ebedf0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    thead{
+      background: #fafafa;
+    }
+    th{
+      padding: 14px 16px;
+      border-color: #e8e8e8;
+    }
+    tr {
+      display: table-row;
+      vertical-align: inherit;
+      border: 1px solid #ebedf0;
+    }
+    td {
+      padding: 14px 16px;
+      border-color: #e8e8e8;
+      border-width: 1px 0;
+      &:nth-child(3){
+        width: 22%;
+        color: #c41d7f;
+        font-size: 13px;
+        word-break: break-all;
+      }
+    }
+  }
+}
