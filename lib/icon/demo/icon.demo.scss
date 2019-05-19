@@ -1,0 +1,43 @@
+.icon-demo-section{
+  line-height: 1.5;
+}
+.all-icon-demo{
+  line-height: 1.5;
+  text-align: left;
+  padding: 16px;
+  .icons-list{
+    margin: 10px 0;
+    overflow: hidden;
+    li{
+      float: left;
+      width: 16.66%;
+      height: 100px;
+      margin: 3px 0;
+      padding: 30px 0 0;
+      overflow: hidden;
+      color: #555;
+      text-align: center;
+      list-style: none;
+      background-color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: color .3s ease-in-out,background-color .3s ease-in-out;
+
+      &:hover{
+        color: #fff;
+        background-color: #1890ff;
+        .sdj-icon{
+          transform: scale(1.4);
+        }
+        span{
+          transform: scale(.8);
+        }
+      }
+      span{
+        display: block;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+    }
+  }
+}

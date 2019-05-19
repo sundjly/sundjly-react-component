@@ -13,7 +13,12 @@ ul, ol {
   list-style: none;
 }
 a {
+  transition: color .3s ease;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
 }
 pre {
   font-family: 'Fira Code Medium', Consolas, monospace;

@@ -7,7 +7,11 @@ const code = require('!!raw-loader!./button.example.tsx').default;
 
 export default () => {
 	return (
-		<Demo code={code}>
+		<Demo
+			code={code}
+			title={'Button 组件'}
+			description={'Button 简单使用'}
+		>
 			<ButtonExample/>
 		</Demo>
 	);
