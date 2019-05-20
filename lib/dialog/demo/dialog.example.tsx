@@ -7,17 +7,16 @@ const {useState} = React;
 export default function DialogExample() {
 	const [isVisible, setVisible] = useState(false);
 	const [isVisible2, setVisible2] = useState(false);
-	const openModal =()=>{
+	const openModal = () => {
 		const close = modal(
 			<div>
 				modal content
-				<button onClick={()=>{close()}}>close</button>
+				<button onClick={() => {close();}}>close</button>
 			</div>
-
-		)
-	}
+		);
+	};
 	return (
-		<div>
+		<div style={{width:'100%'}}>
 			<section className="code-box">
 				<h1>example 1</h1>
 				<button onClick={() => {setVisible(!isVisible);}}>show dialog</button>
@@ -35,15 +34,19 @@ export default function DialogExample() {
 			<section className="code-box">
 				<h1>example 2</h1>
 				<button onClick={() => {setVisible2(!isVisible2);}}>show dialog2</button>
-				<Dialog closeByMask={false} onClose={() => {setVisible2(false);}} visible={isVisible2}>
+				<Dialog
+					closeByMask={false}
+					onClose={() => {setVisible2(false);}}
+					visible={isVisible2}
+				>
 					<div>somde contents...</div>
 				</Dialog>
 			</section>
 			<section className="code-box">
 				<h1>example 3</h1>
-				<button onClick={()=>{alert('alert content')}}>alert</button>
-				<button onClick={()=>{confirm({content:'confirm'})}}>confirm</button>
-				<button onClick={()=>{openModal()}}>modal</button>
+				<button onClick={() => {alert('alert content');}}>alert</button>
+				<button onClick={() => {confirm({content: 'confirm'});}}>confirm</button>
+				<button onClick={() => {openModal();}}>modal</button>
 			</section>
 		</div>
 

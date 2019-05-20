@@ -1,19 +1,20 @@
-import ButtonExample from './button.example';
+import LayoutExample from './layout.example';
 import Demo from '../../helpers/demo/demo';
+
 import * as React from 'react';
 import ApiContainer from '../../helpers/api-container/apiContainer';
 
-const code = require('!!raw-loader!./button.example.tsx').default;
+const code = require('!!raw-loader!./layout.example.tsx').default;
 
 export default () => {
 	return (
-		<section className={'button-demo-section'}>
+		<section>
 			<Demo
 				code={code}
-				title={'Button 组件'}
-				description={'Button 简单使用'}
+				title={'Layout 组件'}
+				description={'Layout 简单使用'}
 			>
-				<ButtonExample/>
+				<LayoutExample/>
 			</Demo>
 			<ApiContainer
 				tbody={[
